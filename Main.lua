@@ -2,34 +2,7 @@
 禁止圈钱使用｜仅供学习]]
 
 
--- ===================================================
--- 白名单状态
--- ===================================================
 
-local env = (type(getgenv) == "function" and getgenv()) or _G
-
-local whitelistStatus = env.WhitelistStatus or "checking"
-local whitelistReason = env.WhitelistReason or ""
-
-local isAuth = whitelistStatus == "authorized"
-local isLocked = not isAuth
-
-local lockTitle
-
-if whitelistStatus == "denied" then
-    lockTitle = "未授权"
-elseif whitelistStatus == "error" then
-    lockTitle = "验证服务异常"
-else
-    lockTitle = "验证中"
-end
-
-print(
-    "[Whitelist]",
-    "Status =", whitelistStatus,
-    "Authorized =", isAuth,
-    "Reason =", whitelistReason
-)
 
 local success, library = pcall(function()
     return loadstring(game:HttpGet("https://raw.githubusercontent.com/SyndromeXph/Feng-Yu/refs/heads/main/UI-Library.lua"))()
